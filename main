@@ -1,0 +1,123 @@
+<style>
+  /* Base Layout & Sizing */
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Video & Slide Styling */
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .video-wrapper {
+    flex-shrink: 0;
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  /* Navigation Arrows */
+  .carousel-arrow {
+    background-color: transparent;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 32px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .carousel-arrow:hover {
+    color: #555;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 600px) {
+    .carousel-arrow {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<div class="carousel-wrapper">
+  <button class="carousel-arrow prev">‹</button>
+  <div class="carousel-container">
+    <div class="carousel-slide">
+      <!-- First Video -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/wDdN94O92AI?autoplay=0&controls=1&showinfo=0"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <!-- Second Video -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/mq9iZnZshyg?si=bERogb3RzYHRAMNM"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <!-- Third Video -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/3ZcmOaG-OBk?autoplay=0&controls=1&showinfo=0"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-arrow next">›</button>
+</div>
+
+<script>
+  const carouselSlide = document.querySelector('.carousel-slide');
+  const totalVideos = document.querySelectorAll('.video-wrapper').length;
+  const prevArrow = document.querySelector('.carousel-arrow.prev');
+  const nextArrow = document.querySelector('.carousel-arrow.next');
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
+  }
+  
+  nextArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalVideos;
+    updateCarousel();
+  });
+
+  prevArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalVideos) % totalVideos;
+    updateCarousel();
+  });
+
+  updateCarousel();
+</script>

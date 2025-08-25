@@ -1,8 +1,6 @@
 <style>
-  /* Base Layout & Sizing */
   .carousel-wrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -20,7 +18,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
-  /* Video & Slide Styling */
   .carousel-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -42,16 +39,6 @@
     border-radius: 10px;
   }
 
-  /* Navigation Arrows */
-  .carousel-controls {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 10px;
-    gap: 10px;
-  }
-
   .carousel-arrow {
     background-color: transparent;
     color: #ceebf2;
@@ -59,22 +46,22 @@
     padding: 10px;
     cursor: pointer;
     font-size: 40px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
   }
   
   .carousel-arrow:hover {
-    color: #ceebf2;
-    transform: scale(1.1);
+    color: #b1d4e0;
   }
 
   @media (max-width: 600px) {
     .carousel-arrow {
-      font-size: 32px;
+      font-size: 24px;
     }
   }
 </style>
 
 <div class="carousel-wrapper">
+  <button class="carousel-arrow prev">‹</button>
   <div class="carousel-container">
     <div class="carousel-slide">
       <!-- First Video -->
@@ -103,10 +90,7 @@
       </div>
     </div>
   </div>
-  <div class="carousel-controls">
-    <button class="carousel-arrow prev">‹</button>
-    <button class="carousel-arrow next">›</button>
-  </div>
+  <button class="carousel-arrow next">›</button>
 </div>
 
 <script>
